@@ -34,11 +34,11 @@ jobs:
       with:
         name: pr
         path: |
-          result
+          result/
           .github/pr
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       if: github.event_name == 'push'
       with:
         name: build
-        path: result
+        path: result/
