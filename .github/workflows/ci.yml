@@ -38,6 +38,7 @@ jobs:
         projectName: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
         githubToken: ${{ secrets.GITHUB_TOKEN }}
         directory: ./result
+        branch: main
     - name: Publish preview
       id: preview
       if: github.event_name == 'pull_request_target'
