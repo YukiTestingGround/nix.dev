@@ -97,10 +97,20 @@ jobs:
           issue-number: ${{ steps.pr.outputs.id }}
           edit-mode: replace
           body: |
+            <!-- Deploy Preview Comment -->
+            \# Deploy Preview
             <table>
               <tr>
-                <td><b>Latest commit:</b></td>
-                <td><code>${{ github.event.workflow_run.head_sha }}</code></td>
+                <th>Name</th>
+                <th>Result</th>
+              </tr>
+              <tr>
+                <td><b>Last commit:</b></td>
+                <td>
+                  <a href='https://github.com/${{ github.repository }}/commit/${{ github.event.workflow_run.head_sha }}'>
+                    <code>${{ github.event.workflow_run.head_sha }}</code>
+                  </a>
+                </td>
               <tr>
               <tr>
                 <td><b>Preview URL:</b></td>
