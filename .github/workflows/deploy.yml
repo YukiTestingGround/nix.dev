@@ -9,6 +9,8 @@ on:
 jobs:
   production:
     runs-on: ubuntu-latest
+    permissions:
+      deployments: write
     if: >
       github.event.workflow_run.event == 'push' &&
       github.event.workflow_run.conclusion == 'success' &&
@@ -44,10 +46,13 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
           directory: ./result
           branch: main
   preview:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     if: >
       github.event.workflow_run.event == 'pull_request' &&
       github.event.workflow_run.conclusion == 'success'
