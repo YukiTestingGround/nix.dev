@@ -64,5 +64,5 @@ jobs:
             <tr>
             <tr>
               <td><b>Preview URL:</b></td>
-              <td><a href="${{ steps.preview.outputs.url }}>${{ steps.preview.outputs.url }}</td>
+              <td><a href='${{ steps.preview.outputs.url }}'>${{ steps.preview.outputs.url }}</td>
           </table>
