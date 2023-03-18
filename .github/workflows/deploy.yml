@@ -35,7 +35,9 @@ jobs:
             let fs = require('fs');
             fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/build.zip`, Buffer.from(download.data));
       - name: Extract artifact
-        run: unzip build.zip
+        run: |
+          mkdir result
+          unzip build.zip -d result
       - name: Publish to nix.dev
         uses: cloudflare/pages-action@1
         with:
